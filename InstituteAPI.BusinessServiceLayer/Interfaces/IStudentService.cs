@@ -12,7 +12,7 @@ namespace InstituteAPI.BusinessServiceLayer.Interfaces
     {
         public List<Student> GetActiveStudent();
         public int SetStudent(Student student);
-        public void DeleteStudent(int StudentId);
+        public void DeleteStudent(int studentId);
     }
 }
 

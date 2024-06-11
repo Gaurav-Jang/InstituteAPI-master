@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using InstituteAPI.DataAccessServiceLayer.Interface;
+using InstituteAPI.Models.ClassRoom;
 using InstituteAPI.Models.Student;
 using Microsoft.Extensions.Configuration;
 using Microsoft.VisualBasic;
@@ -33,6 +34,7 @@ namespace InstituteAPI.DataAccessServiceLayer.Repository
             }
             return StudentDetails;
         }
+
         public int SetStudent(Student student)
         {
             using (IDbConnection con = DBConnection)
@@ -44,7 +46,7 @@ namespace InstituteAPI.DataAccessServiceLayer.Repository
                 spParam.Add(Constants.Parameters.inStudentLastName, student.StudentLastName);
                 spParam.Add(Constants.Parameters.inMobileNumber, student.MobileNumber);
                 spParam.Add(Constants.Parameters.inGender, student.Gender);
-                // spParam.Add(Constants.Parameters.inDob, student.Dob);
+                spParam.Add(Constants.Parameters.inDob, student.Dob);
                 spParam.Add(Constants.Parameters.inFatherFirstName, student.FatherFirstName);
                 spParam.Add(Constants.Parameters.inFatherLastName, student.FatherLastName);
                 spParam.Add(Constants.Parameters.inFatherMobileNumber, student.FatherMobileNumber);
@@ -55,25 +57,26 @@ namespace InstituteAPI.DataAccessServiceLayer.Repository
                 spParam.Add(Constants.Parameters.inAddress, student.Address);
                 spParam.Add(Constants.Parameters.inCategory, student.Category);
                 spParam.Add(Constants.Parameters.inRemarks, student.Remarks);
-                // spParam.Add(Constants.Parameters.inPhoto, student.Photo);
+                /*spParam.Add(Constants.Parameters.inPhoto, student.Photo);*/
                 spParam.Add(Constants.Parameters.inAvailingTransport, student.AvailingTransport);
                 spParam.Add(Constants.Parameters.inAvailingSchool, student.AvailingSchool);
                 spParam.Add(Constants.Parameters.inAvailingHostel, student.AvailingHostel);
                 spParam.Add(Constants.Parameters.inMigrated, student.Migrated);
-
+                spParam.Add(Constants.Parameters.inIsActive, student.IsActive);
                 DynamicParameters dynParam = new DynamicParameters(spParam);
                 var result = con.Query<int>(Constants.StoreProcedures.SetStudent, dynParam, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return Convert.ToInt32(result);
             }
 
         }
-        public void DeleteStudent(int StudentId)
+
+        public void DeleteStudent(int studentId)
         {
             using (IDbConnection con = DBConnection)
             {
                 con.Open();
                 Dictionary<string, object> spParam = new Dictionary<string, object>();
-                spParam.Add(Constants.Parameters.inStudentId, StudentId);
+                spParam.Add(Constants.Parameters.inStudentId, studentId);
                 DynamicParameters dynParam = new DynamicParameters(spParam);
                 var result = con.Query(Constants.StoreProcedures.DeleteStudent, dynParam, commandType: CommandType.StoredProcedure);
             }

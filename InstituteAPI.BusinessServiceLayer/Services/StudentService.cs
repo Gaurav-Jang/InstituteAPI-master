@@ -1,5 +1,7 @@
 ﻿using InstituteAPI.BusinessServiceLayer.Interfaces;
 using InstituteAPI.DataAccessServiceLayer.Interface;
+using InstituteAPI.DataAccessServiceLayer.Repository;
+using InstituteAPI.Models.ClassRoom;
 using InstituteAPI.Models.Student;
 using System;
 using System.Collections.Generic;
@@ -20,14 +22,15 @@ namespace InstituteAPI.BusinessServiceLayer.Services
         {
             return _studentRepository.GetActiveStudent();
         }
+
         public int SetStudent(Student student)
         {
             return _studentRepository.SetStudent(student);
         }
-        public void DeleteStudent(int StudentId)
-        {
-            _studentRepository.DeleteStudent(StudentId);
-        }
 
+        public void DeleteStudent(int studentId)
+        {
+            _studentRepository.DeleteStudent(studentId);
+        }
     }
 }

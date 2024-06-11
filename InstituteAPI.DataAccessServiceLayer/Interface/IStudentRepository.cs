@@ -1,4 +1,5 @@
-﻿using InstituteAPI.Models.Student;
+﻿using InstituteAPI.Models.ClassRoom;
+using InstituteAPI.Models.Student;
 using System;
 using System.Collections.Generic;
 using System.Linq;
