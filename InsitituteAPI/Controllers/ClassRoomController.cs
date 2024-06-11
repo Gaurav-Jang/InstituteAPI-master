@@ -1,8 +1,6 @@
-using System.Diagnostics;
 using InstituteAPI.BusinessServiceLayer.Interfaces;
 using InstituteAPI.Models.Class;
 using InstituteAPI.Models.ClassRoom;
-using InstituteAPI.Models.Student;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InstituteAPI.Controllers
@@ -44,6 +42,7 @@ namespace InstituteAPI.Controllers
             return Ok(classDetails);
         }
 
+        // delete
         [HttpGet]
         [Route("DeleteClassRoom")]
         public IActionResult DeleteClassRoom(int classRoomId)
@@ -52,6 +51,7 @@ namespace InstituteAPI.Controllers
             return Ok();
         }
 
+        // edit
         [HttpGet]
         [Route("EditClassRoom")]
         public IActionResult EditClassRoom(int classRoomId)
@@ -67,7 +67,5 @@ namespace InstituteAPI.Controllers
             int ClassRoomId = _classRoomService.SetClassRoom(classRoom);
             return Ok(ClassRoomId);
         }
-
-
     }
 }
