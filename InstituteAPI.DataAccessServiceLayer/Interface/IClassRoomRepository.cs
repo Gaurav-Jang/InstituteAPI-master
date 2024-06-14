@@ -16,6 +16,7 @@ namespace InstituteAPI.DataAccessServiceLayer.Interface
         public List<Class> GetActiveClass();
         public List<ClassRoomType> GetActiveClassRoomType();
         public void DeleteClassRoom(int classRoomId);
-        // public List<ClassRoom> EditClassRoom(int classRoomId);
+        public ClassRoom GetClassRoomByClassRoomId(int classRoomId);
+        public int UpdateClassRoom(ClassRoom classRoom);
     }
 }

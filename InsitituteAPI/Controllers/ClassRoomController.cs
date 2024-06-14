@@ -53,10 +53,20 @@ namespace InstituteAPI.Controllers
 
         // edit
         [HttpGet]
-        [Route("EditClassRoom")]
-        public IActionResult EditClassRoom(int classRoomId)
+        [Route("GetClassRoomByClassRoomId")]
+        public IActionResult GetClassRoomByClassRoomId(int classRoomId)
         {
-            return Ok("");
+            ClassRoom classRoom = _classRoomService.GetClassRoomByClassRoomId(classRoomId);
+            return Ok(classRoom);
+        }
+
+        // update
+        [HttpPost]
+        [Route("UpdateClassRoom")]
+        public IActionResult UpdateClassRoom([FromBody] ClassRoom classRoom)
+        {
+            int ClassRoomId = _classRoomService.UpdateClassRoom (classRoom);
+            return Ok(ClassRoomId);
         }
 
         // Post

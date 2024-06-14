@@ -10,28 +10,37 @@ namespace InstituteAPI.DataAccessServiceLayer
     {
         public class StoreProcedures
         {
+            // get
             public const string GetActiveClassRoom = "GetActiveClassRoom";
             public const string GetActiveClass = "GetActiveClass";
             public const string GetActiveClassRoomType = "GetActiveClassRoomType";
-            public const string SetClassRoom = "SetClassRoom";
+            public const string GetClassRoomByClassRoomId = "GetClassRoomByClassRoomId";
             public const string GetActiveStudent = "GetActiveStudent";
-            public const string DeleteClassRoom = "DeleteClassRoom";
-            public const string DeleteStudent = "DeleteStudent";
+            
+            // set
+            public const string SetClassRoom = "SetClassRoom";
             public const string SetStudent = "setStudent";
 
-            // public static string DeleteStudent { get; internal set; }
-            // public const string EditClassRoom = "EditClassRoom";
+            // update
+            public const string UpdateClassRoom = "UpdateClassRoom";
+
+            // delete
+            public const string DeleteClassRoom = "DeleteClassRoom";
+            public const string DeleteStudent = "DeleteStudent";
         }
         public class Parameters
         {
-            //classroom
+            // classroom
             public const string inClassRoomName = "inClassRoomName";
             public const string inClass = "inClass";
             public const string inClassRoomType = "inClassRoomType";
             public const string inPrice = "inPrice";
             public const string inClassRoomId = "inClassRoomId";
 
-            //student
+            // edit classroom
+            public const string inGetClassRoomByClassRoomId = "inGetClassRoomByClassRoomId";
+
+            // student
             public const string inStudentId = "inStudentId";
             public const string inStudentFirstName = "inStudentFirstName";
             public const string inStudentLastName = "inStudentLastName";

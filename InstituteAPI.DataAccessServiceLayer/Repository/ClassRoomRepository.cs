@@ -91,5 +91,35 @@ namespace InstituteAPI.DataAccessServiceLayer.Repository
             }
 
         }
+        public ClassRoom GetClassRoomByClassRoomId(int ClassRoomId)
+        {
+            ClassRoom classRoomData = new ClassRoom();
+            using (IDbConnection con = DBConnection)
+            {
+                con.Open();
+                Dictionary<string, object> spParam = new Dictionary<string, object>();
+                spParam.Add(Constants.Parameters.inClassRoomId, ClassRoomId);
+                DynamicParameters dynParam = new DynamicParameters(spParam);
+                classRoomData = con.Query<ClassRoom>(Constants.StoreProcedures.GetClassRoomByClassRoomId, dynParam, commandType: CommandType.StoredProcedure).FirstOrDefault();
+            }
+            return classRoomData;
+        }
+        public int UpdateClassRoom(ClassRoom classRoom)
+        {
+            using (IDbConnection con = DBConnection)
+            {
+                con.Open();
+                Dictionary<string, object> spParam = new Dictionary<string, object>();
+                spParam.Add(Constants.Parameters.inClassRoomId, classRoom.ClassRoomId);
+                spParam.Add(Constants.Parameters.inClassRoomName, classRoom.ClassRoomName);
+                spParam.Add(Constants.Parameters.inClass, classRoom.Class);
+                spParam.Add(Constants.Parameters.inClassRoomType, classRoom.ClassRoomType);
+                spParam.Add(Constants.Parameters.inPrice, classRoom.Price);
+                DynamicParameters dynParam = new DynamicParameters(spParam);
+                var result = con.Query<int>(Constants.StoreProcedures.UpdateClassRoom, dynParam, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                return Convert.ToInt32(result);
+            }
+
+        }
     }
 }
