@@ -65,8 +65,16 @@ namespace InstituteAPI.Controllers
         [Route("UpdateClassRoom")]
         public IActionResult UpdateClassRoom([FromBody] ClassRoom classRoom)
         {
-            int ClassRoomId = _classRoomService.UpdateClassRoom(classRoom);
-            return Ok(ClassRoomId);
+            var data = _classRoomService.CheckDuplicateClassRoom(classRoom);
+            if (data > 0)
+            {
+                return Ok("Class room already exists, make some changes.");
+            }
+            else
+            {
+                int ClassRoomId = _classRoomService.UpdateClassRoom(classRoom);
+                return Ok(ClassRoomId);
+            }
         }
 
         // Post
@@ -84,7 +92,6 @@ namespace InstituteAPI.Controllers
                 int ClassRoomId = _classRoomService.SetClassRoom(classRoom);
                 return Ok(ClassRoomId);
             }
-
         }
     }
 }
