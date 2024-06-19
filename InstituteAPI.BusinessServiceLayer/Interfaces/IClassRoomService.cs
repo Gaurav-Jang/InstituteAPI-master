@@ -18,5 +18,6 @@ namespace InstituteAPI.BusinessServiceLayer.Interfaces
         public void DeleteClassRoom(int classRoomId);
         public ClassRoom GetClassRoomByClassRoomId(int classRoomId);
         public int UpdateClassRoom(ClassRoom classRoom);
+        public int CheckDuplicateClassRoom(ClassRoom classRoom);
     }
 }

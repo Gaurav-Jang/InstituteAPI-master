@@ -39,13 +39,20 @@ namespace InstituteAPI.BusinessServiceLayer.Services
         {
             _classRoomRepository.DeleteClassRoom(classRoomId);
         }
-         public ClassRoom GetClassRoomByClassRoomId(int classRoomId)
-         {
+        public ClassRoom GetClassRoomByClassRoomId(int classRoomId)
+        {
             return _classRoomRepository.GetClassRoomByClassRoomId(classRoomId);
-         }
+        }
         public int UpdateClassRoom(ClassRoom classRoom)
         {
             return _classRoomRepository.UpdateClassRoom(classRoom);
         }
+
+        //CheckDuplicateClassroom
+        public int CheckDuplicateClassRoom(ClassRoom classRoom)
+        {
+            return _classRoomRepository.CheckDuplicateClassRoom(classRoom);
+        }
+
     }
 }

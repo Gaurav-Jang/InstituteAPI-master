@@ -48,9 +48,31 @@ namespace InstituteAPI.DataAccessServiceLayer.Repository
                 DynamicParameters dynParam = new DynamicParameters(spParam);
                 var result = con.Query<int>(Constants.StoreProcedures.SetClassRoom, dynParam, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return Convert.ToInt32(result);
+
             }
 
         }
+
+        public int CheckDuplicateClassRoom(ClassRoom classRoom)
+        {
+            using (IDbConnection con = DBConnection)
+            {
+                con.Open();
+                Dictionary<string, object> spParam = new Dictionary<string, object>();
+                spParam.Add(Constants.Parameters.inClassRoomName, classRoom.ClassRoomName);
+                spParam.Add(Constants.Parameters.inClass, classRoom.Class);
+                spParam.Add(Constants.Parameters.inClassRoomType, classRoom.ClassRoomType);
+                spParam.Add(Constants.Parameters.inPrice, classRoom.Price);
+                DynamicParameters dynParam = new DynamicParameters(spParam);
+
+                var CheckDuplicateClassroom = con.Query<int>(Constants.StoreProcedures.CheckDuplicateClassRoom, dynParam, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                return CheckDuplicateClassroom;
+
+
+            }
+        }
+
+
         public List<Class> GetActiveClass()
         {
             List<Class> classDetails = new List<Class>();
