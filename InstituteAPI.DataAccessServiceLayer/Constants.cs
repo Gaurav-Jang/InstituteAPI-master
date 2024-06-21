@@ -19,7 +19,8 @@ namespace InstituteAPI.DataAccessServiceLayer
 
             // set
             public const string SetClassRoom = "SetClassRoom";
-            public const string SetStudent = "setStudent";
+            public const string SetStudent = "SetStudent";
+            public const string SetSupport = "SetSupport";
 
             // update
             public const string UpdateClassRoom = "UpdateClassRoom";
@@ -34,11 +35,11 @@ namespace InstituteAPI.DataAccessServiceLayer
         public class Parameters
         {
             // classroom
+            public const string inClassRoomId = "inClassRoomId";
             public const string inClassRoomName = "inClassRoomName";
             public const string inClass = "inClass";
             public const string inClassRoomType = "inClassRoomType";
             public const string inPrice = "inPrice";
-            public const string inClassRoomId = "inClassRoomId";
 
             // edit classroom
             public const string inGetClassRoomByClassRoomId = "inGetClassRoomByClassRoomId";
@@ -66,6 +67,13 @@ namespace InstituteAPI.DataAccessServiceLayer
             public const string inAvailingHostel = "inAvailingHostel";
             public const string inMigrated = "inMigrated";
             public const string inIsActive = "inIsActive";
+
+            // support
+            public const string inSupportId = "inSupportId";
+            public const string inFullName = "inFullName";
+            public const string inEmail = "inEmail";
+            public const string inSubject = "inSubject";
+            public const string inMessage = "inMessage";
         }
     }
 }

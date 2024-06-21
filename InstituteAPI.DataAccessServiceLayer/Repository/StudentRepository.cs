@@ -1,6 +1,5 @@
 ﻿using Dapper;
 using InstituteAPI.DataAccessServiceLayer.Interface;
-using InstituteAPI.Models.ClassRoom;
 using InstituteAPI.Models.Student;
 using Microsoft.Extensions.Configuration;
 using Microsoft.VisualBasic;

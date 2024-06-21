@@ -35,6 +35,7 @@ namespace InstituteAPI.DataAccessServiceLayer.Repository
             }
             return classRoomDetails;
         }
+        
         public int SetClassRoom(ClassRoom classRoom)
         {
             using (IDbConnection con = DBConnection)
@@ -64,14 +65,12 @@ namespace InstituteAPI.DataAccessServiceLayer.Repository
                 spParam.Add(Constants.Parameters.inClassRoomType, classRoom.ClassRoomType);
                 spParam.Add(Constants.Parameters.inPrice, classRoom.Price);
                 DynamicParameters dynParam = new DynamicParameters(spParam);
-
                 var CheckDuplicateClassroom = con.Query<int>(Constants.StoreProcedures.CheckDuplicateClassRoom, dynParam, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return CheckDuplicateClassroom;
 
 
             }
         }
-
 
         public List<Class> GetActiveClass()
         {
@@ -87,6 +86,7 @@ namespace InstituteAPI.DataAccessServiceLayer.Repository
             }
             return classDetails;
         }
+        
         public List<ClassRoomType> GetActiveClassRoomType()
         {
             List<ClassRoomType> classRoomType = new List<ClassRoomType>();
@@ -101,6 +101,7 @@ namespace InstituteAPI.DataAccessServiceLayer.Repository
             }
             return classRoomType;
         }
+        
         public void DeleteClassRoom(int classRoomId)
         {
             using (IDbConnection con = DBConnection)
@@ -113,6 +114,7 @@ namespace InstituteAPI.DataAccessServiceLayer.Repository
             }
 
         }
+        
         public ClassRoom GetClassRoomByClassRoomId(int ClassRoomId)
         {
             ClassRoom classRoomData = new ClassRoom();
@@ -126,6 +128,7 @@ namespace InstituteAPI.DataAccessServiceLayer.Repository
             }
             return classRoomData;
         }
+        
         public int UpdateClassRoom(ClassRoom classRoom)
         {
             using (IDbConnection con = DBConnection)

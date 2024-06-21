@@ -1,7 +1,6 @@
 ﻿using InstituteAPI.BusinessServiceLayer.Interfaces;
 using InstituteAPI.DataAccessServiceLayer.Interface;
 using InstituteAPI.DataAccessServiceLayer.Repository;
-using InstituteAPI.Models.ClassRoom;
 using InstituteAPI.Models.Student;
 using System;
 using System.Collections.Generic;
