@@ -56,7 +56,7 @@ namespace InstituteAPI.DataAccessServiceLayer.Repository
                 spParam.Add(Constants.Parameters.inAddress, student.Address);
                 spParam.Add(Constants.Parameters.inCategory, student.Category);
                 spParam.Add(Constants.Parameters.inRemarks, student.Remarks);
-                /*spParam.Add(Constants.Parameters.inPhoto, student.Photo);*/
+                // /*spParam.Add(Constants.Parameters.inPhoto, student.Photo);*/
                 spParam.Add(Constants.Parameters.inAvailingTransport, student.AvailingTransport);
                 spParam.Add(Constants.Parameters.inAvailingSchool, student.AvailingSchool);
                 spParam.Add(Constants.Parameters.inAvailingHostel, student.AvailingHostel);
@@ -68,6 +68,29 @@ namespace InstituteAPI.DataAccessServiceLayer.Repository
             }
 
         }
+        public int CheckDuplicateStudent(Student student)
+        {
+            using (IDbConnection con = DBConnection)
+            {
+                con.Open();
+                Dictionary<string, object> spParam = new Dictionary<string, object>();
+                // spParam.Add(Constants.Parameters.inStudentId, student.StudentId);
+                spParam.Add(Constants.Parameters.inStudentFirstName, student.StudentFirstName);
+                spParam.Add(Constants.Parameters.inStudentLastName, student.StudentLastName);
+                spParam.Add(Constants.Parameters.inMobileNumber, student.MobileNumber);
+                spParam.Add(Constants.Parameters.inGender, student.Gender);
+                spParam.Add(Constants.Parameters.inDob, student.Dob);
+                spParam.Add(Constants.Parameters.inFatherFirstName, student.FatherFirstName);
+                spParam.Add(Constants.Parameters.inFatherLastName, student.FatherLastName);
+                spParam.Add(Constants.Parameters.inFatherMobileNumber, student.FatherMobileNumber);
+                DynamicParameters dynParam = new DynamicParameters(spParam);
+
+                var DuplicateStudent = con.Query<int>(Constants.StoreProcedures.CheckDuplicateStudent, dynParam, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                return DuplicateStudent;
+            }
+
+        }
+
 
         public void DeleteStudent(int studentId)
         {

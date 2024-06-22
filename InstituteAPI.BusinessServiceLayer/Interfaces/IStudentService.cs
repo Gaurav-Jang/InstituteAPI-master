@@ -13,6 +13,7 @@ namespace InstituteAPI.BusinessServiceLayer.Interfaces
         public List<Student> GetActiveStudent();
         public int SetStudent(Student student);
         public void DeleteStudent(int studentId);
+        public int CheckDuplicateStudent(Student student);
     }
 }
 

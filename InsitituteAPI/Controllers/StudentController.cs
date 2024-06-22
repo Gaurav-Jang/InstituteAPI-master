@@ -39,9 +39,18 @@ namespace InstituteAPI.Controllers
         [Route("SetStudent")]
         public IActionResult SetStudent([FromBody] Student student)
         {
+            var data = _studentService.CheckDuplicateStudent(student);
+            if (data > 0)
+            {
+                return Ok("Student already exists.");
+            }
+            else
+            {
+                int StudentId = _studentService.SetStudent(student);
+                return Ok(StudentId);
+            }
 
-            int StudentId = _studentService.SetStudent(student);
-            return Ok(StudentId);
         }
+
     }
 }

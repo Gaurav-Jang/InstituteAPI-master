@@ -31,5 +31,11 @@ namespace InstituteAPI.BusinessServiceLayer.Services
         {
             _studentRepository.DeleteStudent(studentId);
         }
+
+        public int CheckDuplicateStudent(Student student)
+        {
+            return _studentRepository.CheckDuplicateStudent(student);
+        }
+
     }
 }

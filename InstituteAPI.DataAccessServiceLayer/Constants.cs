@@ -31,6 +31,7 @@ namespace InstituteAPI.DataAccessServiceLayer
 
             //CheckDuplicateClassroom
             public const string CheckDuplicateClassRoom = "CheckDuplicateClassRoom";
+            public const string CheckDuplicateStudent = "CheckDuplicateStudent";
         }
         public class Parameters
         {
