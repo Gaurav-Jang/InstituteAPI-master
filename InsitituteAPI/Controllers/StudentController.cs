@@ -51,6 +51,14 @@ namespace InstituteAPI.Controllers
             }
 
         }
+        // edit
+        [HttpGet]
+        [Route("GetStudentByStudentId")]
+        public IActionResult GetStudentByStudentId(int studentId)
+        {
+            Student student = _studentService.GetStudentByStudentId(studentId);
+            return Ok(student);
+        }
 
     }
 }

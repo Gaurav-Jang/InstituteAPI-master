@@ -104,6 +104,20 @@ namespace InstituteAPI.DataAccessServiceLayer.Repository
             }
 
         }
+        public Student GetStudentByStudentId(int StudentId)
+        {
+            Student studentData = new Student();
+            using (IDbConnection con = DBConnection)
+            {
+                con.Open();
+                Dictionary<string, object> spParam = new Dictionary<string, object>();
+                spParam.Add(Constants.Parameters.inStudentId, StudentId);
+                DynamicParameters dynParam = new DynamicParameters(spParam);
+                studentData = con.Query<Student>(Constants.StoreProcedures.GetStudentByStudentId, dynParam, commandType: CommandType.StoredProcedure).FirstOrDefault();
+            }
+            return studentData;
+        }
+
     }
 }
 

@@ -36,6 +36,10 @@ namespace InstituteAPI.BusinessServiceLayer.Services
         {
             return _studentRepository.CheckDuplicateStudent(student);
         }
+        public Student GetStudentByStudentId(int studentId)
+        {
+            return _studentRepository.GetStudentByStudentId(studentId);
+        }
 
     }
 }

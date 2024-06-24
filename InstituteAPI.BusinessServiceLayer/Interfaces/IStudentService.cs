@@ -14,6 +14,7 @@ namespace InstituteAPI.BusinessServiceLayer.Interfaces
         public int SetStudent(Student student);
         public void DeleteStudent(int studentId);
         public int CheckDuplicateStudent(Student student);
+        public Student GetStudentByStudentId(int Student);
     }
 }
 
