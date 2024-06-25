@@ -60,5 +60,21 @@ namespace InstituteAPI.Controllers
             return Ok(student);
         }
 
+        // update
+        [HttpPost]
+        [Route("UpdateStudent")]
+        public IActionResult UpdateStudent([FromBody] Student student)
+        {
+            var data = _studentService.CheckDuplicateStudent(student);
+            if (data > 0)
+            {
+                return Ok("Student already exists, make some changes.");
+            }
+            else
+            {
+                int StudentId = _studentService.UpdateStudent(student);
+                return Ok(StudentId);
+            }
+        }
     }
 }

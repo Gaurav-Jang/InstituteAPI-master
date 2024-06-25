@@ -25,6 +25,7 @@ namespace InstituteAPI.DataAccessServiceLayer
 
             // update
             public const string UpdateClassRoom = "UpdateClassRoom";
+            public const string UpdateStudent = "UpdateStudent";
 
             // delete
             public const string DeleteClassRoom = "DeleteClassRoom";

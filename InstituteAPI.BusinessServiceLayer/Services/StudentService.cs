@@ -41,5 +41,9 @@ namespace InstituteAPI.BusinessServiceLayer.Services
             return _studentRepository.GetStudentByStudentId(studentId);
         }
 
+        public int UpdateStudent(Student student)
+        {
+            return _studentRepository.UpdateStudent(student);
+        }
     }
 }
