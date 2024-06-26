@@ -2,23 +2,29 @@ using InstituteAPI.DataAccessServiceLayer;
 using InstituteAPI.BusinessServiceLayer;
 
 var builder = WebApplication.CreateBuilder(args);
+
 var configuration = builder.Configuration;
 builder.Services.AddBusinessInfrastructure(configuration);
 builder.Services.AddInfrastructure(configuration);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddCors(option =>
+
+// Configure CORS policy
+builder.Services.AddCors(options =>
 {
-    option.AddDefaultPolicy(builder =>
+    options.AddDefaultPolicy(builder =>
     {
-        builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
     });
 });
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -28,8 +34,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
 app.UseCors();
+
+app.UseHttpsRedirection();
+
 app.UseAuthorization();
 
 app.MapControllers();

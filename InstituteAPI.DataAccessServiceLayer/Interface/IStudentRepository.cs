@@ -13,9 +13,8 @@ namespace InstituteAPI.DataAccessServiceLayer.Interface
         public List<Student> GetActiveStudent();
         public int SetStudent(Student student);
         public int CheckDuplicateStudent(Student student);
-        public Student GetStudentByStudentId(int Student);
-        public int UpdateStudent(Student student);
-
+        public Student GetStudentByStudentId(int studentId);
+        int UpdateStudent(Student student);
     }
 }
 

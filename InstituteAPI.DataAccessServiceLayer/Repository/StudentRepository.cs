@@ -18,7 +18,6 @@ namespace InstituteAPI.DataAccessServiceLayer.Repository
         {
 
         }
-
         public List<Student> GetActiveStudent()
         {
             List<Student> StudentDetails = new List<Student>();
@@ -33,7 +32,6 @@ namespace InstituteAPI.DataAccessServiceLayer.Repository
             }
             return StudentDetails;
         }
-
         public int SetStudent(Student student)
         {
             using (IDbConnection con = DBConnection)
@@ -74,7 +72,6 @@ namespace InstituteAPI.DataAccessServiceLayer.Repository
             {
                 con.Open();
                 Dictionary<string, object> spParam = new Dictionary<string, object>();
-                spParam.Add(Constants.Parameters.inStudentId, student.StudentId);
                 spParam.Add(Constants.Parameters.inStudentFirstName, student.StudentFirstName);
                 spParam.Add(Constants.Parameters.inStudentLastName, student.StudentLastName);
                 spParam.Add(Constants.Parameters.inMobileNumber, student.MobileNumber);
@@ -83,15 +80,14 @@ namespace InstituteAPI.DataAccessServiceLayer.Repository
                 spParam.Add(Constants.Parameters.inFatherFirstName, student.FatherFirstName);
                 spParam.Add(Constants.Parameters.inFatherLastName, student.FatherLastName);
                 spParam.Add(Constants.Parameters.inFatherMobileNumber, student.FatherMobileNumber);
+                spParam.Add(Constants.Parameters.inStudentClassRoomName, student.StudentClassRoomName);
+                spParam.Add(Constants.Parameters.inAddress, student.Address);
                 DynamicParameters dynParam = new DynamicParameters(spParam);
 
                 var DuplicateStudent = con.Query<int>(Constants.StoreProcedures.CheckDuplicateStudent, dynParam, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return DuplicateStudent;
             }
-
         }
-
-
         public void DeleteStudent(int studentId)
         {
             using (IDbConnection con = DBConnection)
@@ -132,11 +128,25 @@ namespace InstituteAPI.DataAccessServiceLayer.Repository
                 spParam.Add(Constants.Parameters.inFatherFirstName, student.FatherFirstName);
                 spParam.Add(Constants.Parameters.inFatherLastName, student.FatherLastName);
                 spParam.Add(Constants.Parameters.inFatherMobileNumber, student.FatherMobileNumber);
+                spParam.Add(Constants.Parameters.inMotherFirstName, student.MotherFirstName);
+                spParam.Add(Constants.Parameters.inMotherLastName, student.MotherLastName);
+                spParam.Add(Constants.Parameters.inMotherMobileNumber, student.MotherMobileNumber);
+                spParam.Add(Constants.Parameters.inStudentClassRoomName, student.StudentClassRoomName);
+                spParam.Add(Constants.Parameters.inAddress, student.Address);
+                spParam.Add(Constants.Parameters.inCategory, student.Category);
+                spParam.Add(Constants.Parameters.inRemarks, student.Remarks);
+                // spParam.Add(Constants.Parameters.inPhoto, student.Photo);
+                spParam.Add(Constants.Parameters.inAvailingTransport, student.AvailingTransport);
+                spParam.Add(Constants.Parameters.inAvailingSchool, student.AvailingSchool);
+                spParam.Add(Constants.Parameters.inAvailingHostel, student.AvailingHostel);
+                spParam.Add(Constants.Parameters.inMigrated, student.Migrated);
+
                 DynamicParameters dynParam = new DynamicParameters(spParam);
                 var result = con.Query<int>(Constants.StoreProcedures.UpdateStudent, dynParam, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return Convert.ToInt32(result);
             }
         }
+
     }
 }
 

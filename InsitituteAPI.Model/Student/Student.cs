@@ -18,6 +18,7 @@
         public string Address { get; set; }
         public string Category { get; set; }
         public string Remarks { get; set; }
+
         // public string Photo { get; set; }
         public bool AvailingTransport { get; set; }
         public bool AvailingSchool { get; set; }

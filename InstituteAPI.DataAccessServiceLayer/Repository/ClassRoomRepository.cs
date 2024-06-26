@@ -67,8 +67,6 @@ namespace InstituteAPI.DataAccessServiceLayer.Repository
                 DynamicParameters dynParam = new DynamicParameters(spParam);
                 var CheckDuplicateClassroom = con.Query<int>(Constants.StoreProcedures.CheckDuplicateClassRoom, dynParam, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return CheckDuplicateClassroom;
-
-
             }
         }
 
@@ -114,7 +112,7 @@ namespace InstituteAPI.DataAccessServiceLayer.Repository
             }
 
         }
-        
+
         public ClassRoom GetClassRoomByClassRoomId(int ClassRoomId)
         {
             ClassRoom classRoomData = new ClassRoom();

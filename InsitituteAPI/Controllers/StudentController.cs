@@ -17,6 +17,7 @@ namespace InstituteAPI.Controllers
             _logger = logger;
             _studentService = StudentService;
         }
+
         //Get
         [HttpGet()]
         [Route("GetActiveStudent")]
@@ -25,6 +26,7 @@ namespace InstituteAPI.Controllers
             List<Student> students = _studentService.GetActiveStudent();
             return Ok(students);
         }
+
         // Get Delete Student
         [HttpGet]
         [Route("DeleteStudent")]
@@ -42,15 +44,15 @@ namespace InstituteAPI.Controllers
             var data = _studentService.CheckDuplicateStudent(student);
             if (data > 0)
             {
-                return Ok("Student already exists.");
+                return Ok("The Student already exists. Please try again.");
             }
             else
             {
                 int StudentId = _studentService.SetStudent(student);
                 return Ok(StudentId);
             }
-
         }
+
         // edit
         [HttpGet]
         [Route("GetStudentByStudentId")]
@@ -68,7 +70,7 @@ namespace InstituteAPI.Controllers
             var data = _studentService.CheckDuplicateStudent(student);
             if (data > 0)
             {
-                return Ok("Student already exists, make some changes.");
+                return Ok("The Student already exists. Please try again.");
             }
             else
             {

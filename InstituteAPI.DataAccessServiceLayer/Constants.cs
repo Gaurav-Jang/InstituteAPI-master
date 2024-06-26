@@ -15,8 +15,8 @@ namespace InstituteAPI.DataAccessServiceLayer
             public const string GetActiveClass = "GetActiveClass";
             public const string GetActiveClassRoomType = "GetActiveClassRoomType";
             public const string GetClassRoomByClassRoomId = "GetClassRoomByClassRoomId";
-            public const string GetStudentByStudentId = "GetStudentByStudentId";
             public const string GetActiveStudent = "GetActiveStudent";
+            public const string GetStudentByStudentId = "GetStudentByStudentId";
 
             // set
             public const string SetClassRoom = "SetClassRoom";
@@ -34,7 +34,6 @@ namespace InstituteAPI.DataAccessServiceLayer
             //CheckDuplicateClassroom
             public const string CheckDuplicateClassRoom = "CheckDuplicateClassRoom";
             public const string CheckDuplicateStudent = "CheckDuplicateStudent";
-
         }
         public class Parameters
         {

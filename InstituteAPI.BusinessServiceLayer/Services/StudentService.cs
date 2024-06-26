@@ -21,17 +21,14 @@ namespace InstituteAPI.BusinessServiceLayer.Services
         {
             return _studentRepository.GetActiveStudent();
         }
-
         public int SetStudent(Student student)
         {
             return _studentRepository.SetStudent(student);
         }
-
         public void DeleteStudent(int studentId)
         {
             _studentRepository.DeleteStudent(studentId);
         }
-
         public int CheckDuplicateStudent(Student student)
         {
             return _studentRepository.CheckDuplicateStudent(student);
@@ -40,7 +37,6 @@ namespace InstituteAPI.BusinessServiceLayer.Services
         {
             return _studentRepository.GetStudentByStudentId(studentId);
         }
-
         public int UpdateStudent(Student student)
         {
             return _studentRepository.UpdateStudent(student);
