@@ -13,6 +13,7 @@ namespace InstituteAPI.BusinessServiceLayer
             services.AddTransient<IClassRoomService, ClassRoomService>();
             services.AddTransient<IStudentService, StudentService>();
             services.AddTransient<ISupportService, SupportService>();
+            services.AddTransient<IFeeStructureService, FeeStructureService>();
             #endregion
         }
     }

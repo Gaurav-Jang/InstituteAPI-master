@@ -22,6 +22,7 @@ namespace InstituteAPI.DataAccessServiceLayer
             public const string SetClassRoom = "SetClassRoom";
             public const string SetStudent = "SetStudent";
             public const string SetSupport = "SetSupport";
+            public const string SetFeeStructure = "SetFeeStructure";
 
             // update
             public const string UpdateClassRoom = "UpdateClassRoom";
@@ -77,6 +78,17 @@ namespace InstituteAPI.DataAccessServiceLayer
             public const string inEmail = "inEmail";
             public const string inSubject = "inSubject";
             public const string inMessage = "inMessage";
+
+
+            //AddFeeStructure
+            public const string inFeeStructureId = "inFeeStructureId";
+            // public const string inClass = "inClass";
+            public const string inRegistrationFees = "inRegistrationFees";
+            public const string inAdmissionFees = "inAdmissionFees";
+            public const string inTutionFees = "inTutionFees";
+            public const string inWelcomeKit = "inWelcomeKit";
+            public const string inSchoolFees = "inSchoolFees";
+            public const string inMigrationCharges = "inMigrationCharges";
         }
     }
 }
