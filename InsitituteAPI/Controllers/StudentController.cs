@@ -70,7 +70,7 @@ namespace InstituteAPI.Controllers
             var data = _studentService.CheckDuplicateStudent(student);
             if (data > 0)
             {
-                return Ok("The Student already exists. Please try again.");
+                return Ok("Student already exists, make some changes.");
             }
             else
             {

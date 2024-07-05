@@ -54,7 +54,7 @@ namespace InstituteAPI.DataAccessServiceLayer.Repository
                 spParam.Add(Constants.Parameters.inAddress, student.Address);
                 spParam.Add(Constants.Parameters.inCategory, student.Category);
                 spParam.Add(Constants.Parameters.inRemarks, student.Remarks);
-                // spParam.Add(Constants.Parameters.inPhoto, student.Photo);
+                spParam.Add(Constants.Parameters.inPhoto, student.Photo);
                 spParam.Add(Constants.Parameters.inAvailingTransport, student.AvailingTransport);
                 spParam.Add(Constants.Parameters.inAvailingSchool, student.AvailingSchool);
                 spParam.Add(Constants.Parameters.inAvailingHostel, student.AvailingHostel);
@@ -135,7 +135,7 @@ namespace InstituteAPI.DataAccessServiceLayer.Repository
                 spParam.Add(Constants.Parameters.inAddress, student.Address);
                 spParam.Add(Constants.Parameters.inCategory, student.Category);
                 spParam.Add(Constants.Parameters.inRemarks, student.Remarks);
-                // spParam.Add(Constants.Parameters.inPhoto, student.Photo);
+                spParam.Add(Constants.Parameters.inPhoto, student.Photo);
                 spParam.Add(Constants.Parameters.inAvailingTransport, student.AvailingTransport);
                 spParam.Add(Constants.Parameters.inAvailingSchool, student.AvailingSchool);
                 spParam.Add(Constants.Parameters.inAvailingHostel, student.AvailingHostel);

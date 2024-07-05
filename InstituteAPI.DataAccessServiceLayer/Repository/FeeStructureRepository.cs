@@ -18,7 +18,20 @@ namespace InstituteAPI.DataAccessServiceLayer.Repository
         {
 
         }
-
+        public List<FeeStructure> GetActiveFeeStructure()
+        {
+            List<FeeStructure> FeeStructureDetails = new List<FeeStructure>();
+            using (IDbConnection con = DBConnection)
+            {
+                con.Open();
+                var result = con.Query<FeeStructure>(Constants.StoreProcedures.GetActiveFeeStructure, commandType: CommandType.StoredProcedure);
+                if (result != null)
+                {
+                    FeeStructureDetails = result.ToList();
+                }
+            }
+            return FeeStructureDetails;
+        }
         public int SetFeeStructure(FeeStructure feeStructure)
         {
             using (IDbConnection con = DBConnection)
@@ -26,10 +39,10 @@ namespace InstituteAPI.DataAccessServiceLayer.Repository
                 con.Open();
                 Dictionary<string, object> spParam = new Dictionary<string, object>();
                 spParam.Add(Constants.Parameters.inFeeStructureId, feeStructure.FeeStructureId);
-                spParam.Add(Constants.Parameters.inClass, feeStructure.Class);
+                spParam.Add(Constants.Parameters.inStudentClass, feeStructure.StudentClass);
                 spParam.Add(Constants.Parameters.inRegistrationFees, feeStructure.RegistrationFees);
                 spParam.Add(Constants.Parameters.inAdmissionFees, feeStructure.AdmissionFees);
-                spParam.Add(Constants.Parameters.inTutionFees, feeStructure.TutionFees);
+                spParam.Add(Constants.Parameters.inTuitionFees, feeStructure.TuitionFees);
                 spParam.Add(Constants.Parameters.inWelcomeKit, feeStructure.WelcomeKit);
                 spParam.Add(Constants.Parameters.inSchoolFees, feeStructure.SchoolFees);
                 spParam.Add(Constants.Parameters.inMigrationCharges, feeStructure.MigrationCharges);
@@ -40,10 +53,71 @@ namespace InstituteAPI.DataAccessServiceLayer.Repository
             }
 
         }
+        public void DeleteFeeStructure(int FeeStructureId)
+        {
+            using (IDbConnection con = DBConnection)
+            {
+                con.Open();
+                Dictionary<string, object> spParam = new Dictionary<string, object>();
+                spParam.Add(Constants.Parameters.inFeeStructureId, FeeStructureId);
+                DynamicParameters dynParam = new DynamicParameters(spParam);
+                var result = con.Query(Constants.StoreProcedures.DeleteFeeStructure, dynParam, commandType: CommandType.StoredProcedure);
+            }
 
+        }
+        public FeeStructure GetFeeStructureByFeeStructureId(int FeeStructureId)
+        {
+            FeeStructure feeStructureData = new FeeStructure();
+            using (IDbConnection con = DBConnection)
+            {
+                con.Open();
+                Dictionary<string, object> spParam = new Dictionary<string, object>();
+                spParam.Add(Constants.Parameters.inFeeStructureId, FeeStructureId);
+                DynamicParameters dynParam = new DynamicParameters(spParam);
+                feeStructureData = con.Query<FeeStructure>(Constants.StoreProcedures.GetFeeStructureByFeeStructureId, dynParam, commandType: CommandType.StoredProcedure).FirstOrDefault();
+            }
+            return feeStructureData;
+        }
+        public int UpdateFeeStructure(FeeStructure feeStructure)
+        {
+            using (IDbConnection con = DBConnection)
+            {
+                con.Open();
+                Dictionary<string, object> spParam = new Dictionary<string, object>();
+                spParam.Add(Constants.Parameters.inFeeStructureId, feeStructure.FeeStructureId);
+                spParam.Add(Constants.Parameters.inStudentClass, feeStructure.StudentClass);
+                spParam.Add(Constants.Parameters.inRegistrationFees, feeStructure.RegistrationFees);
+                spParam.Add(Constants.Parameters.inAdmissionFees, feeStructure.AdmissionFees);
+                spParam.Add(Constants.Parameters.inTuitionFees, feeStructure.TuitionFees);
+                spParam.Add(Constants.Parameters.inWelcomeKit, feeStructure.WelcomeKit);
+                spParam.Add(Constants.Parameters.inSchoolFees, feeStructure.SchoolFees);
+                spParam.Add(Constants.Parameters.inMigrationCharges, feeStructure.MigrationCharges);
+                spParam.Add(Constants.Parameters.inIsActive, feeStructure.IsActive);
+                DynamicParameters dynParam = new DynamicParameters(spParam);
+                var result = con.Query<int>(Constants.StoreProcedures.UpdateFeeStructure, dynParam, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                return Convert.ToInt32(result);
+            }
 
-
-
+        }
+        public int CheckDuplicateFeeStructure(FeeStructure feeStructure)
+        {
+            using (IDbConnection con = DBConnection)
+            {
+                con.Open();
+                Dictionary<string, object> spParam = new Dictionary<string, object>();
+                spParam.Add(Constants.Parameters.inFeeStructureId, feeStructure.FeeStructureId);
+                spParam.Add(Constants.Parameters.inStudentClass, feeStructure.StudentClass);
+                spParam.Add(Constants.Parameters.inRegistrationFees, feeStructure.RegistrationFees);
+                spParam.Add(Constants.Parameters.inAdmissionFees, feeStructure.AdmissionFees);
+                spParam.Add(Constants.Parameters.inTuitionFees, feeStructure.TuitionFees);
+                spParam.Add(Constants.Parameters.inWelcomeKit, feeStructure.WelcomeKit);
+                spParam.Add(Constants.Parameters.inSchoolFees, feeStructure.SchoolFees);
+                spParam.Add(Constants.Parameters.inMigrationCharges, feeStructure.MigrationCharges);
+                DynamicParameters dynParam = new DynamicParameters(spParam);
+                var CheckDuplicateFeeStructure = con.Query<int>(Constants.StoreProcedures.CheckDuplicateFeeStructure, dynParam, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                return CheckDuplicateFeeStructure;
+            }
+        }
     }
 }
 

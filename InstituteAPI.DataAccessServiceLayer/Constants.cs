@@ -17,6 +17,8 @@ namespace InstituteAPI.DataAccessServiceLayer
             public const string GetClassRoomByClassRoomId = "GetClassRoomByClassRoomId";
             public const string GetActiveStudent = "GetActiveStudent";
             public const string GetStudentByStudentId = "GetStudentByStudentId";
+            public const string GetActiveFeeStructure = "GetActiveFeeStructure";
+            public const string GetFeeStructureByFeeStructureId = "GetFeeStructureByFeeStructureId";
 
             // set
             public const string SetClassRoom = "SetClassRoom";
@@ -27,14 +29,17 @@ namespace InstituteAPI.DataAccessServiceLayer
             // update
             public const string UpdateClassRoom = "UpdateClassRoom";
             public const string UpdateStudent = "UpdateStudent";
+            public const string UpdateFeeStructure  = "UpdateFeeStructure";
 
             // delete
             public const string DeleteClassRoom = "DeleteClassRoom";
             public const string DeleteStudent = "DeleteStudent";
+            public const string DeleteFeeStructure = "DeleteFeeStructure";
 
             //CheckDuplicateClassroom
             public const string CheckDuplicateClassRoom = "CheckDuplicateClassRoom";
             public const string CheckDuplicateStudent = "CheckDuplicateStudent";
+            public const string CheckDuplicateFeeStructure = "CheckDuplicateFeeStructure";
         }
         public class Parameters
         {
@@ -82,10 +87,10 @@ namespace InstituteAPI.DataAccessServiceLayer
 
             //AddFeeStructure
             public const string inFeeStructureId = "inFeeStructureId";
-            // public const string inClass = "inClass";
+            public const string inStudentClass = "inStudentClass";
             public const string inRegistrationFees = "inRegistrationFees";
             public const string inAdmissionFees = "inAdmissionFees";
-            public const string inTutionFees = "inTutionFees";
+            public const string inTuitionFees = "inTuitionFees";
             public const string inWelcomeKit = "inWelcomeKit";
             public const string inSchoolFees = "inSchoolFees";
             public const string inMigrationCharges = "inMigrationCharges";
