@@ -1,6 +1,4 @@
-using System.Diagnostics;
 using InstituteAPI.BusinessServiceLayer.Interfaces;
-using InstituteAPI.BusinessServiceLayer.Services;
 using InstituteAPI.Models.FeeStructure;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,6 +22,14 @@ namespace InstituteAPI.Controllers
         public IActionResult GetActiveFeeStructure()
         {
             List<FeeStructure> feeStructure = _feeStructureService.GetActiveFeeStructure();
+            return Ok(feeStructure);
+        }
+        
+        [HttpGet]
+        [Route("GetFeeStructureByClassRoom")]
+        public IActionResult GetFeeStructureByClassRoom(string classRoomName)
+        {
+            List<FeeStructure> feeStructure = _feeStructureService.GetFeeStructureByClassRoom(classRoomName);
             return Ok(feeStructure);
         }
 

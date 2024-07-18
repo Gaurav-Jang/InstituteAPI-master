@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace InstituteAPI.DataAccessServiceLayer
+﻿namespace InstituteAPI.DataAccessServiceLayer
 {
     public static class Constants
     {
@@ -13,12 +7,14 @@ namespace InstituteAPI.DataAccessServiceLayer
             // get
             public const string GetActiveClassRoom = "GetActiveClassRoom";
             public const string GetActiveClass = "GetActiveClass";
+            public const string GetActiveClassRoomName = "GetActiveClassRoomName";
             public const string GetActiveClassRoomType = "GetActiveClassRoomType";
             public const string GetClassRoomByClassRoomId = "GetClassRoomByClassRoomId";
             public const string GetActiveStudent = "GetActiveStudent";
             public const string GetStudentByStudentId = "GetStudentByStudentId";
             public const string GetActiveFeeStructure = "GetActiveFeeStructure";
             public const string GetFeeStructureByFeeStructureId = "GetFeeStructureByFeeStructureId";
+            public const string GetFeeStructureByClassRoom = "GetFeeStructureByClassRoom";
 
             // set
             public const string SetClassRoom = "SetClassRoom";
@@ -29,7 +25,7 @@ namespace InstituteAPI.DataAccessServiceLayer
             // update
             public const string UpdateClassRoom = "UpdateClassRoom";
             public const string UpdateStudent = "UpdateStudent";
-            public const string UpdateFeeStructure  = "UpdateFeeStructure";
+            public const string UpdateFeeStructure = "UpdateFeeStructure";
 
             // delete
             public const string DeleteClassRoom = "DeleteClassRoom";
@@ -84,15 +80,15 @@ namespace InstituteAPI.DataAccessServiceLayer
             public const string inSubject = "inSubject";
             public const string inMessage = "inMessage";
 
-
-            //AddFeeStructure
+            // AddFeeStructure
             public const string inFeeStructureId = "inFeeStructureId";
-            public const string inStudentClass = "inStudentClass";
+            public const string inStudentClassRoomNames = "inStudentClassRoomNames";
             public const string inRegistrationFees = "inRegistrationFees";
             public const string inAdmissionFees = "inAdmissionFees";
             public const string inTuitionFees = "inTuitionFees";
             public const string inWelcomeKit = "inWelcomeKit";
             public const string inSchoolFees = "inSchoolFees";
+            public const string inExamFees = "inExamFees";
             public const string inMigrationCharges = "inMigrationCharges";
         }
     }

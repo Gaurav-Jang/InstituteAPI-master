@@ -1,12 +1,6 @@
 using InstituteAPI.BusinessServiceLayer.Interfaces;
 using InstituteAPI.DataAccessServiceLayer.Interface;
-using InstituteAPI.DataAccessServiceLayer.Repository;
 using InstituteAPI.Models.FeeStructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace InstituteAPI.BusinessServiceLayer.Services
 {
@@ -20,6 +14,10 @@ namespace InstituteAPI.BusinessServiceLayer.Services
         public List<FeeStructure> GetActiveFeeStructure()
         {
             return _feeStructureRepository.GetActiveFeeStructure();
+        }
+        public List<FeeStructure> GetFeeStructureByClassRoom(string classRoomName)
+        {
+            return _feeStructureRepository.GetFeeStructureByClassRoom(classRoomName);
         }
         public int SetFeeStructure(FeeStructure feeStructure)
         {

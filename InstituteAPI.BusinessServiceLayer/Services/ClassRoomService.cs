@@ -2,11 +2,7 @@
 using InstituteAPI.DataAccessServiceLayer.Interface;
 using InstituteAPI.Models.Class;
 using InstituteAPI.Models.ClassRoom;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using InstituteAPI.Models.ClassRoomName;
 
 namespace InstituteAPI.BusinessServiceLayer.Services
 {
@@ -14,7 +10,6 @@ namespace InstituteAPI.BusinessServiceLayer.Services
     {
         readonly IClassRoomRepository _classRoomRepository;
         private object _classRepository;
-
         public ClassRoomService(IClassRoomRepository userRepo)
         {
             _classRoomRepository = userRepo;
@@ -30,6 +25,10 @@ namespace InstituteAPI.BusinessServiceLayer.Services
         public List<Class> GetActiveClass()
         {
             return _classRoomRepository.GetActiveClass();
+        }
+        public List<ClassRoomName> GetActiveClassRoomName()
+        {
+            return _classRoomRepository.GetActiveClassRoomName();
         }
         public List<ClassRoomType> GetActiveClassRoomType()
         {

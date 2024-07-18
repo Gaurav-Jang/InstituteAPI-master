@@ -1,36 +1,34 @@
 ﻿using Dapper;
 using InstituteAPI.DataAccessServiceLayer.Interface;
-using InstituteAPI.Models.Class;
-using InstituteAPI.Models.ClassRoom;
-using InstituteAPI.Models.ClassRoomName;
+using InstituteAPI.Models.FeesPayment;
 using Microsoft.Extensions.Configuration;
 using System.Data;
 
 namespace InstituteAPI.DataAccessServiceLayer.Repository
 {
-    public class ClassRoomRepository : BaseRepository, IClassRoomRepository
+    public class FeePaymentRepository : BaseRepository, IFeePaymentRepository
     {
-        public ClassRoomRepository(IConfiguration config) : base(config)
+        public FeePaymentRepository(IConfiguration config) : base(config)
         {
 
         }
 
-        public List<ClassRoom> GetActiveClassRoom()
+        public List<FeePayment> GetActiveFeePayment()
         {
-            List<ClassRoom> classRoomDetails = new List<ClassRoom>();
+            List<FeePayment> feePaymentDetails = new List<FeePayment>();
             using (IDbConnection con = DBConnection)
             {
                 con.Open();
-                var result = con.Query<ClassRoom>(Constants.StoreProcedures.GetActiveClassRoom, commandType: CommandType.StoredProcedure);
+                var result = con.Query<FeePayment>(Constants.StoreProcedures.GetActiveFeesPayment, commandType: CommandType.StoredProcedure);
                 if (result != null)
                 {
-                    classRoomDetails = result.ToList();
+                    feePaymentDetails = result.ToList();
                 }
             }
-            return classRoomDetails;
+            return feePaymentDetails;
         }
 
-        public int SetClassRoom(ClassRoom classRoom)
+        public int SetClassRoom(FeePayment feePayment)
         {
             using (IDbConnection con = DBConnection)
             {

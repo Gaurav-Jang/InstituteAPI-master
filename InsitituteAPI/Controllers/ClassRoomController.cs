@@ -1,6 +1,7 @@
 using InstituteAPI.BusinessServiceLayer.Interfaces;
 using InstituteAPI.Models.Class;
 using InstituteAPI.Models.ClassRoom;
+using InstituteAPI.Models.ClassRoomName;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InstituteAPI.Controllers
@@ -31,6 +32,14 @@ namespace InstituteAPI.Controllers
         public IActionResult GetActiveClass()
         {
             List<Class> classDetails = _classRoomService.GetActiveClass();
+            return Ok(classDetails);
+        }
+        
+        [HttpGet]
+        [Route("GetActiveClassRoomName")]
+        public IActionResult GetActiveClassRoomName()
+        {
+            List<ClassRoomName> classDetails = _classRoomService.GetActiveClassRoomName();
             return Ok(classDetails);
         }
 

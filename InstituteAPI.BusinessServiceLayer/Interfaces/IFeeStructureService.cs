@@ -11,6 +11,7 @@ namespace InstituteAPI.BusinessServiceLayer.Interfaces
     public interface IFeeStructureService
     {
         public List<FeeStructure> GetActiveFeeStructure();
+        public List<FeeStructure> GetFeeStructureByClassRoom(string classRoomName);
         public int SetFeeStructure(FeeStructure feeStructure);
         public void DeleteFeeStructure(int feeStructureId);
         public FeeStructure GetFeeStructureByFeeStructureId(int feeStructureId);

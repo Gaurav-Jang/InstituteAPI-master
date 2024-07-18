@@ -1,15 +1,11 @@
 using InstituteAPI.Models.FeeStructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace InstituteAPI.DataAccessServiceLayer.Interface
 {
     public interface IFeeStructureRepository
     {
         public List<FeeStructure> GetActiveFeeStructure();
+        public List<FeeStructure> GetFeeStructureByClassRoom(string classRoomName);
         public int SetFeeStructure(FeeStructure feeStructure);
         public void DeleteFeeStructure(int feeStructureId);
         public FeeStructure GetFeeStructureByFeeStructureId(int feeStructureId);

@@ -1,11 +1,6 @@
 ﻿using InstituteAPI.Models.Class;
 using InstituteAPI.Models.ClassRoom;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using InstituteAPI.Models.ClassRoomName;
 
 namespace InstituteAPI.DataAccessServiceLayer.Interface
 {
@@ -14,6 +9,7 @@ namespace InstituteAPI.DataAccessServiceLayer.Interface
         public List<ClassRoom> GetActiveClassRoom();
         public int SetClassRoom(ClassRoom classRoom);
         public List<Class> GetActiveClass();
+        public List<ClassRoomName> GetActiveClassRoomName();
         public List<ClassRoomType> GetActiveClassRoomType();
         public void DeleteClassRoom(int classRoomId);
         public ClassRoom GetClassRoomByClassRoomId(int classRoomId);
