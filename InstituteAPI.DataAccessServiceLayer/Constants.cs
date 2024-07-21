@@ -9,11 +9,13 @@
             public const string GetActiveClass = "GetActiveClass";
             public const string GetActiveClassRoomName = "GetActiveClassRoomName";
             public const string GetActiveClassRoomType = "GetActiveClassRoomType";
-            public const string GetClassRoomByClassRoomId = "GetClassRoomByClassRoomId";
             public const string GetActiveStudent = "GetActiveStudent";
             public const string GetStudentByStudentId = "GetStudentByStudentId";
             public const string GetActiveFeeStructure = "GetActiveFeeStructure";
+            public const string GetActiveFeesPayment = "GetActiveFeePayment";
+            public const string GetClassRoomByClassRoomId = "GetClassRoomByClassRoomId";
             public const string GetFeeStructureByFeeStructureId = "GetFeeStructureByFeeStructureId";
+            public const string GetFeesPaymentByFeesPaymentId = "GetFeesPaymentByFeesPaymentId";
             public const string GetFeeStructureByClassRoom = "GetFeeStructureByClassRoom";
 
             // set
@@ -21,21 +23,25 @@
             public const string SetStudent = "SetStudent";
             public const string SetSupport = "SetSupport";
             public const string SetFeeStructure = "SetFeeStructure";
+            public const string SetFeesPayment = "SetFeesPayment";
 
             // update
             public const string UpdateClassRoom = "UpdateClassRoom";
             public const string UpdateStudent = "UpdateStudent";
             public const string UpdateFeeStructure = "UpdateFeeStructure";
+            public const string UpdateFeesPayment = "UpdateFeesPayment";
 
             // delete
             public const string DeleteClassRoom = "DeleteClassRoom";
             public const string DeleteStudent = "DeleteStudent";
             public const string DeleteFeeStructure = "DeleteFeeStructure";
+            public const string DeleteFeesPayment = "DeleteFeePayment";
 
             //CheckDuplicateClassroom
             public const string CheckDuplicateClassRoom = "CheckDuplicateClassRoom";
             public const string CheckDuplicateStudent = "CheckDuplicateStudent";
             public const string CheckDuplicateFeeStructure = "CheckDuplicateFeeStructure";
+            public const string CheckDuplicateFeesPayment = "CheckDuplicateFeePayment";
         }
         public class Parameters
         {
@@ -90,6 +96,23 @@
             public const string inSchoolFees = "inSchoolFees";
             public const string inExamFees = "inExamFees";
             public const string inMigrationCharges = "inMigrationCharges";
+
+            // FeePayment
+            public const string inFeePaymentId = "inFeePaymentId";
+            public const string inFeeStudentFirstName = "inFeeStudentFirstName";
+            public const string inFeeDob = "inFeeDob";
+            public const string inFeeFatherFirstName = "inFeeFatherFirstName";
+            public const string inFeeStudentClassRoomName = "inFeeStudentClassRoomName";
+            public const string inFeeAvailingTransport = "inFeeAvailingTransport";
+            public const string inFeeAvailingSchool = "inFeeAvailingSchool";
+            public const string inFeeAvailingHostel = "inFeeAvailingHostel";
+            public const string inFeeRegistrationFees = "inFeeRegistrationFees";
+            public const string inFeeAdmissionFees = "inFeeAdmissionFees";
+            public const string inFeeTuitionFees = "inFeeTuitionFees";
+            public const string inFeeWelcomeKit = "inFeeWelcomeKit";
+            public const string inFeeSchoolFees = "inFeeSchoolFees";
+            public const string inFeeExamFees = "inFeeExamFees";
+            public const string inFeeMigrationCharges = "inFeeMigrationCharges";
         }
     }
 }

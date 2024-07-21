@@ -14,6 +14,7 @@ namespace InstituteAPI.DataAccessServiceLayer
             services.AddTransient<IStudentRepository, StudentRepository>();
             services.AddTransient<ISupportRepository, SupportRepository>();
             services.AddTransient<IFeeStructureRepository, FeeStructureRepository>();
+            services.AddTransient<IFeePaymentRepository, FeePaymentRepository>();
             #endregion
         }
     }

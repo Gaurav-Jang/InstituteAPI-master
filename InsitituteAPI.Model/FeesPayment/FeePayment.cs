@@ -4,6 +4,7 @@
     {
         public string FeesPaymentId { get; set; }
         public string StudentFirstName { get; set; }
+        public string StudentClassRoomName { get; set; }
         public string Dob { get; set; }
         public string FatherFirstName { get; set; }
         public bool AvailingTransport { get; set; }

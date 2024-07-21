@@ -51,7 +51,7 @@ namespace InstituteAPI.Controllers
             var data = _feePaymentService.CheckDuplicateFeesPayment(feePayment);
             if (data > 0)
             {
-                return Ok("Class room already exists, make some changes.");
+                return Ok("student fees payment already exists.");
             }
             else
             {
@@ -68,7 +68,7 @@ namespace InstituteAPI.Controllers
             var data = _feePaymentService.CheckDuplicateFeesPayment(feePayment);
             if (data > 0)
             {
-                return Ok("Fee payment already exists.");
+                return Ok("student fees payment already exists.");
             }
             else
             {

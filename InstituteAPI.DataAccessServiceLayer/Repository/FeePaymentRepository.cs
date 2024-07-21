@@ -13,7 +13,7 @@ namespace InstituteAPI.DataAccessServiceLayer.Repository
 
         }
 
-        public List<FeePayment> GetActiveFeePayment()
+        public List<FeePayment> GetActiveFeesPayment()
         {
             List<FeePayment> feePaymentDetails = new List<FeePayment>();
             using (IDbConnection con = DBConnection)
@@ -27,126 +27,105 @@ namespace InstituteAPI.DataAccessServiceLayer.Repository
             }
             return feePaymentDetails;
         }
-
-        public int SetClassRoom(FeePayment feePayment)
+        public int SetFeesPayment(FeePayment feePayment)
         {
             using (IDbConnection con = DBConnection)
             {
                 con.Open();
                 Dictionary<string, object> spParam = new Dictionary<string, object>();
-                spParam.Add(Constants.Parameters.inClassRoomName, classRoom.ClassRoomName);
-                spParam.Add(Constants.Parameters.inClass, classRoom.Class);
-                spParam.Add(Constants.Parameters.inClassRoomType, classRoom.ClassRoomType);
-                spParam.Add(Constants.Parameters.inPrice, classRoom.Price);
+                spParam.Add(Constants.Parameters.inFeeStudentFirstName, feePayment.StudentFirstName);
+                spParam.Add(Constants.Parameters.inFeeDob, feePayment.Dob);
+                spParam.Add(Constants.Parameters.inFeeFatherFirstName, feePayment.FatherFirstName);
+                spParam.Add(Constants.Parameters.inFeeStudentClassRoomName, feePayment.StudentClassRoomName);
+                spParam.Add(Constants.Parameters.inFeeAvailingTransport, feePayment.AvailingTransport);
+                spParam.Add(Constants.Parameters.inFeeAvailingSchool, feePayment.AvailingSchool);
+                spParam.Add(Constants.Parameters.inFeeAvailingHostel, feePayment.AvailingHostel);
+                spParam.Add(Constants.Parameters.inFeeRegistrationFees, feePayment.RegistrationFees);
+                spParam.Add(Constants.Parameters.inFeeAdmissionFees, feePayment.AdmissionFees);
+                spParam.Add(Constants.Parameters.inFeeTuitionFees, feePayment.TuitionFees);
+                spParam.Add(Constants.Parameters.inFeeWelcomeKit, feePayment.WelcomeKit);
+                spParam.Add(Constants.Parameters.inFeeSchoolFees, feePayment.SchoolFees);
+                spParam.Add(Constants.Parameters.inFeeExamFees, feePayment.ExamFees);
+                spParam.Add(Constants.Parameters.inFeeMigrationCharges, feePayment.MigrationCharges);
                 DynamicParameters dynParam = new DynamicParameters(spParam);
-                var result = con.Query<int>(Constants.StoreProcedures.SetClassRoom, dynParam, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                var result = con.Query<int>(Constants.StoreProcedures.SetFeesPayment, dynParam, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return Convert.ToInt32(result);
 
             }
 
         }
-
-        public int CheckDuplicateClassRoom(ClassRoom classRoom)
+        public int CheckDuplicateFeesPayment(FeePayment feePayment)
         {
             using (IDbConnection con = DBConnection)
             {
                 con.Open();
                 Dictionary<string, object> spParam = new Dictionary<string, object>();
-                spParam.Add(Constants.Parameters.inClassRoomName, classRoom.ClassRoomName);
-                spParam.Add(Constants.Parameters.inClass, classRoom.Class);
-                spParam.Add(Constants.Parameters.inClassRoomType, classRoom.ClassRoomType);
-                spParam.Add(Constants.Parameters.inPrice, classRoom.Price);
+                spParam.Add(Constants.Parameters.inFeeStudentFirstName, feePayment.StudentFirstName);
+                spParam.Add(Constants.Parameters.inFeeDob, feePayment.Dob);
+                spParam.Add(Constants.Parameters.inFeeFatherFirstName, feePayment.FatherFirstName);
+                spParam.Add(Constants.Parameters.inFeeStudentClassRoomName, feePayment.StudentClassRoomName);
+                spParam.Add(Constants.Parameters.inFeeAvailingTransport, feePayment.AvailingTransport);
+                spParam.Add(Constants.Parameters.inFeeAvailingSchool, feePayment.AvailingSchool);
+                spParam.Add(Constants.Parameters.inFeeAvailingHostel, feePayment.AvailingHostel);
+                spParam.Add(Constants.Parameters.inFeeRegistrationFees, feePayment.RegistrationFees);
+                spParam.Add(Constants.Parameters.inFeeAdmissionFees, feePayment.AdmissionFees);
+                spParam.Add(Constants.Parameters.inFeeTuitionFees, feePayment.TuitionFees);
+                spParam.Add(Constants.Parameters.inFeeWelcomeKit, feePayment.WelcomeKit);
+                spParam.Add(Constants.Parameters.inFeeSchoolFees, feePayment.SchoolFees);
+                spParam.Add(Constants.Parameters.inFeeExamFees, feePayment.ExamFees);
+                spParam.Add(Constants.Parameters.inFeeMigrationCharges, feePayment.MigrationCharges);
                 DynamicParameters dynParam = new DynamicParameters(spParam);
-                var CheckDuplicateClassroom = con.Query<int>(Constants.StoreProcedures.CheckDuplicateClassRoom, dynParam, commandType: CommandType.StoredProcedure).FirstOrDefault();
-                return CheckDuplicateClassroom;
+                var CheckDuplicateFeePayment = con.Query<int>(Constants.StoreProcedures.CheckDuplicateFeesPayment, dynParam, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                return CheckDuplicateFeePayment;
             }
         }
-
-        public List<Class> GetActiveClass()
-        {
-            List<Class> classDetails = new List<Class>();
-            using (IDbConnection con = DBConnection)
-            {
-                con.Open();
-                var result = con.Query<Class>(Constants.StoreProcedures.GetActiveClass, commandType: CommandType.StoredProcedure);
-                if (result != null)
-                {
-                    classDetails = result.ToList();
-                }
-            }
-            return classDetails;
-        }
-
-        public List<ClassRoomName> GetActiveClassRoomName()
-        {
-            List<ClassRoomName> classDetails = new List<ClassRoomName>();
-            using (IDbConnection con = DBConnection)
-            {
-                con.Open();
-                var result = con.Query<ClassRoomName>(Constants.StoreProcedures.GetActiveClassRoomName, commandType: CommandType.StoredProcedure);
-                if (result != null)
-                {
-                    classDetails = result.ToList();
-                }
-            }
-            return classDetails;
-        }
-
-        public List<ClassRoomType> GetActiveClassRoomType()
-        {
-            List<ClassRoomType> classRoomType = new List<ClassRoomType>();
-            using (IDbConnection con = DBConnection)
-            {
-                con.Open();
-                var result = con.Query<ClassRoomType>(Constants.StoreProcedures.GetActiveClassRoomType, commandType: CommandType.StoredProcedure);
-                if (result != null)
-                {
-                    classRoomType = result.ToList();
-                }
-            }
-            return classRoomType;
-        }
-
-        public void DeleteClassRoom(int classRoomId)
+        public void DeleteFeesPayment(int feePaymentId)
         {
             using (IDbConnection con = DBConnection)
             {
                 con.Open();
                 Dictionary<string, object> spParam = new Dictionary<string, object>();
-                spParam.Add(Constants.Parameters.inClassRoomId, classRoomId);
+                spParam.Add(Constants.Parameters.inFeePaymentId, feePaymentId);
                 DynamicParameters dynParam = new DynamicParameters(spParam);
-                var result = con.Query(Constants.StoreProcedures.DeleteClassRoom, dynParam, commandType: CommandType.StoredProcedure);
+                var result = con.Query(Constants.StoreProcedures.DeleteFeesPayment, dynParam, commandType: CommandType.StoredProcedure);
             }
 
         }
-
-        public ClassRoom GetClassRoomByClassRoomId(int ClassRoomId)
+        public FeePayment GetFeesPaymentByFeesPaymentId(int feePaymentId)
         {
-            ClassRoom classRoomData = new ClassRoom();
+            FeePayment FeePaymentData = new FeePayment();
             using (IDbConnection con = DBConnection)
             {
                 con.Open();
                 Dictionary<string, object> spParam = new Dictionary<string, object>();
-                spParam.Add(Constants.Parameters.inClassRoomId, ClassRoomId);
+                spParam.Add(Constants.Parameters.inFeePaymentId, feePaymentId);
                 DynamicParameters dynParam = new DynamicParameters(spParam);
-                classRoomData = con.Query<ClassRoom>(Constants.StoreProcedures.GetClassRoomByClassRoomId, dynParam, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                FeePaymentData = con.Query<FeePayment>(Constants.StoreProcedures.GetFeesPaymentByFeesPaymentId, dynParam, commandType: CommandType.StoredProcedure).FirstOrDefault();
             }
-            return classRoomData;
+            return FeePaymentData;
         }
-
-        public int UpdateClassRoom(ClassRoom classRoom)
+        public int UpdateFeesPayment(FeePayment feePayment)
         {
             using (IDbConnection con = DBConnection)
             {
                 con.Open();
                 Dictionary<string, object> spParam = new Dictionary<string, object>();
-                spParam.Add(Constants.Parameters.inClassRoomId, classRoom.ClassRoomId);
-                spParam.Add(Constants.Parameters.inClassRoomName, classRoom.ClassRoomName);
-                spParam.Add(Constants.Parameters.inClass, classRoom.Class);
-                spParam.Add(Constants.Parameters.inClassRoomType, classRoom.ClassRoomType);
-                spParam.Add(Constants.Parameters.inPrice, classRoom.Price);
+                spParam.Add(Constants.Parameters.inFeeStudentFirstName, feePayment.StudentFirstName);
+                spParam.Add(Constants.Parameters.inFeeDob, feePayment.Dob);
+                spParam.Add(Constants.Parameters.inFeeFatherFirstName, feePayment.FatherFirstName);
+                spParam.Add(Constants.Parameters.inFeeStudentClassRoomName, feePayment.StudentClassRoomName);
+                spParam.Add(Constants.Parameters.inFeeAvailingTransport, feePayment.AvailingTransport);
+                spParam.Add(Constants.Parameters.inFeeAvailingSchool, feePayment.AvailingSchool);
+                spParam.Add(Constants.Parameters.inFeeAvailingHostel, feePayment.AvailingHostel);
+                spParam.Add(Constants.Parameters.inFeeRegistrationFees, feePayment.RegistrationFees);
+                spParam.Add(Constants.Parameters.inFeeAdmissionFees, feePayment.AdmissionFees);
+                spParam.Add(Constants.Parameters.inFeeTuitionFees, feePayment.TuitionFees);
+                spParam.Add(Constants.Parameters.inFeeWelcomeKit, feePayment.WelcomeKit);
+                spParam.Add(Constants.Parameters.inFeeSchoolFees, feePayment.SchoolFees);
+                spParam.Add(Constants.Parameters.inFeeExamFees, feePayment.ExamFees);
+                spParam.Add(Constants.Parameters.inFeeMigrationCharges, feePayment.MigrationCharges);
                 DynamicParameters dynParam = new DynamicParameters(spParam);
-                var result = con.Query<int>(Constants.StoreProcedures.UpdateClassRoom, dynParam, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                var result = con.Query<int>(Constants.StoreProcedures.UpdateFeesPayment, dynParam, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 return Convert.ToInt32(result);
             }
 

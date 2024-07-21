@@ -23,9 +23,9 @@ namespace InstituteAPI.BusinessServiceLayer.Services
         {
             _feePaymentRepository.DeleteFeesPayment(feePaymentId);
         }
-        public FeePayment GetFeePaymentByFeePaymentId(int feePaymentId)
+        public FeePayment GetFeesPaymentByFeesPaymentId(int feePaymentId)
         {
-            return _feePaymentRepository.GetFeePaymentByFeePaymentId(feePaymentId);
+            return _feePaymentRepository.GetFeesPaymentByFeesPaymentId(feePaymentId);
         }
         public int UpdateFeesPayment(FeePayment feePayment)
         {
